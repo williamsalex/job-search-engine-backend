@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+doc = RestClient.get('https://www.meetup.com/topics/')
+body = doc.body
+main = body.split('<a name="Tech">')[1].split('<a name="Writing"')[0]
+list = main.split('</a></div></li><li class="gridList-item"><div class="gridList-itemInner"><a class="link" href="')
+cleanList = list.map{|item| item.split('">')[1]}
+finishedList = cleanList[1..-2]
+
+finishedList.each{|item| Interest.create(name: item)}
