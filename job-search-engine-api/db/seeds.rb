@@ -17,3 +17,20 @@ cleanList = list.map{|item| item.split('">')[1]}
 finishedList = cleanList[1..-2]
 
 finishedList.each{|item| Interest.create(name: item)}
+
+# builtinNyc jobs webscrape
+
+doc = Nokogiri::HTML(open('https://www.builtinnyc.com/jobs'))
+
+# job_titles = doc.css('div.left-col').collect do |job_title|
+#     job_title.css('h2.title').text
+# end
+
+# companies = doc.css('div.left-col').collect do |company|
+#     company.css('div.company-title').text
+# end
+
+# locations = doc.css('div.left-col').collect do |location|
+#     location.css('div.job-location').text
+# end
+
