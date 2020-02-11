@@ -16,7 +16,7 @@ list = main.split('</a></div></li><li class="gridList-item"><div class="gridList
 cleanList = list.map{|item| item.split('">')[1]}
 finishedList = cleanList[1..-2]
 
-finishedList.each{|item| Interest.create(name: item)}
+finishedList.each{|item| Interest.create(title: item)}
 
 # builtinNyc jobs webscrape
 
